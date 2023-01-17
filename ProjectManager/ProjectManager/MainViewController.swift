@@ -6,8 +6,20 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    let mainView = MainView()
+    
+    override func loadView() {
+        view = mainView
+        setupNavigationBar()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+    }
+    
+    private func setupNavigationBar() {
+        navigationItem.title = "Project Manager"
+        navigationItem.rightBarButtonItem = mainView.plusButton
     }
 }

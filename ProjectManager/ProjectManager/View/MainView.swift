@@ -39,6 +39,5 @@ extension MainView {
             todoTableView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
             todoTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20)
         ])
-        
     }
 }

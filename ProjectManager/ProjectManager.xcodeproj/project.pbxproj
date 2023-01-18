@@ -10,6 +10,8 @@
 		6D1EEDF2C3DFBF602109DAD2 /* Pods_ProjectManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36B43859C5BCEAB5BAC6C56 /* Pods_ProjectManager.framework */; };
 		9081ACA22975B1F3005A9BF8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081ACA12975B1F3005A9BF8 /* MainView.swift */; };
 		90CF56242977682100B8358A /* ItemModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 90CF56222977682100B8358A /* ItemModel.xcdatamodeld */; };
+		90E1AB772978819600332FB0 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E1AB762978819600332FB0 /* PopupView.swift */; };
+		90E1AB792978823E00332FB0 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E1AB782978823E00332FB0 /* PopupViewController.swift */; };
 		90E5607C2973A61F005BE9EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90E5607B2973A61F005BE9EB /* GoogleService-Info.plist */; };
 		90E91C2B2976BE8700B88A26 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E91C2A2976BE8700B88A26 /* Item.swift */; };
 		90E91C302976C34900B88A26 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E91C2F2976C34900B88A26 /* CoreDataManager.swift */; };
@@ -24,6 +26,8 @@
 		17CD02AAC6DF611565FDF96C /* Pods-ProjectManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectManager.release.xcconfig"; path = "Target Support Files/Pods-ProjectManager/Pods-ProjectManager.release.xcconfig"; sourceTree = "<group>"; };
 		9081ACA12975B1F3005A9BF8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		90CF56232977682100B8358A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		90E1AB762978819600332FB0 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
+		90E1AB782978823E00332FB0 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		90E5607B2973A61F005BE9EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		90E91C2A2976BE8700B88A26 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		90E91C2F2976C34900B88A26 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -81,6 +85,7 @@
 			children = (
 				90E91C2F2976C34900B88A26 /* CoreDataManager.swift */,
 				C7431F0925F51E1D0094C4CF /* MainViewController.swift */,
+				90E1AB782978823E00332FB0 /* PopupViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -89,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				9081ACA12975B1F3005A9BF8 /* MainView.swift */,
+				90E1AB762978819600332FB0 /* PopupView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -242,9 +248,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				90E91C302976C34900B88A26 /* CoreDataManager.swift in Sources */,
+				90E1AB772978819600332FB0 /* PopupView.swift in Sources */,
 				90E91C2B2976BE8700B88A26 /* Item.swift in Sources */,
 				C7431F0A25F51E1D0094C4CF /* MainViewController.swift in Sources */,
 				90CF56242977682100B8358A /* ItemModel.xcdatamodeld in Sources */,
+				90E1AB792978823E00332FB0 /* PopupViewController.swift in Sources */,
 				9081ACA22975B1F3005A9BF8 /* MainView.swift in Sources */,
 				C7431F0625F51E1D0094C4CF /* AppDelegate.swift in Sources */,
 				C7431F0825F51E1D0094C4CF /* SceneDelegate.swift in Sources */,

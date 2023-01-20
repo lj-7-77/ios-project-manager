@@ -19,8 +19,18 @@ final class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         mainView.todoTableView.delegate = self
         mainView.todoTableView.dataSource = self
+        mainView.todoTableView.register(CustomCell.self, forCellReuseIdentifier: "cell")
+
+        mainView.doingTableView.delegate = self
+        mainView.doingTableView.dataSource = self
+        mainView.doingTableView.register(CustomCell.self, forCellReuseIdentifier: "cell")
+
+        mainView.doneTableView.delegate = self
+        mainView.doneTableView.dataSource = self
+        mainView.doneTableView.register(CustomCell.self, forCellReuseIdentifier: "cell")
     }
     
     private func setupNavigationBar() {
@@ -42,14 +52,24 @@ final class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+extension MainViewController:  UITableViewDelegate{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+}
+
+extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.reuseIdentifier,
+                                                       for: indexPath)
+                as? UITableViewCell else {
+            return UITableViewCell()
+        }
+
         return cell
     }
 }

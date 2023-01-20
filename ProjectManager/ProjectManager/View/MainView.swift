@@ -8,13 +8,9 @@
 import UIKit
 
 final class MainView: UIView {
-    var todoTableView: UITableView = {
-        let table = UITableView()
-        table.layer.borderWidth = 1
-        return table
-    }()
-//    var doingTableView = UITableView()
-//    var doneTableView = UITableView()
+    var todoTableView = UITableView()
+    var doingTableView = UITableView()
+    var doneTableView = UITableView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,6 +26,8 @@ final class MainView: UIView {
 extension MainView {
     private func setupUI() {
         self.addSubview(todoTableView)
+        self.addSubview(doingTableView)
+        self.addSubview(doneTableView)
         setupConstraints()
     }
 
@@ -40,4 +38,18 @@ extension MainView {
             todoTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20)
         ])
     }
+}
+
+
+final class CustomCell: UITableViewCell {
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
 }

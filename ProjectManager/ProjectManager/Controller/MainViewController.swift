@@ -8,6 +8,7 @@ import CoreData
 
 final class MainViewController: UIViewController {
     let mainView = MainView()
+    
     var container: NSPersistentContainer!
     let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -51,10 +52,4 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
-    
-}
-
-class tableCell: UITableViewCell {
-    
 }

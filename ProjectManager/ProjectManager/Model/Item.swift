@@ -8,10 +8,10 @@
 import Foundation
 
 struct Item {
-    let title: String
-    let body: String
-    let deadLine: Date
     var status: Status
+    let title: String
+    let description: String
+    let deadLine: Date
 }
 
 enum Status {

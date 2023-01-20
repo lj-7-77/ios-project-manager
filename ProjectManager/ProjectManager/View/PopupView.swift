@@ -10,7 +10,7 @@ import UIKit
 class PopupView: UIView {
     let contentTitle: UITextField = {
         let textField = UITextField()
-        textField.text = "할 일 제목"
+        textField.placeholder = "Title"
         textField.font = UIFont.preferredFont(forTextStyle: .title3)
         return textField
     }()

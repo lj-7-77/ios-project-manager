@@ -87,7 +87,28 @@ extension MainViewController: UITableViewDataSource {
                 as? CustomCell else {
             return UITableViewCell()
         }
-
+        cell.setupCell(items[indexPath.row]) //
         return cell
+    }
+
+    private func configureCellContents() {
+        let arr: [Item] = DummyItems.items
+
+        arr.forEach{ sortItem($0) }
+    }
+    
+    private func sortItem(_ item: Item) {
+        var todoArr: [Item] = []
+        var doingArr: [Item] = []
+        var doneArr: [Item] = []
+        
+        switch item.status {
+        case .todo:
+            todoArr.append(item)
+        case .doing:
+            doingArr.append(item)
+        case .done:
+            doneArr.append(item)
+        }
     }
 }

@@ -87,7 +87,7 @@ extension MainViewController: UITableViewDataSource {
                 as? CustomCell else {
             return UITableViewCell()
         }
-        cell.setupCell(items[indexPath.row]) //
+        cell.setupCell(items[indexPath.row])
         return cell
     }
 

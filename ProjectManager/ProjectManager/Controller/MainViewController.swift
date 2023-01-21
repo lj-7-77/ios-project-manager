@@ -8,6 +8,7 @@ import CoreData
 
 final class MainViewController: UIViewController {
     let mainView = MainView()
+    var items: [Item] = DummyItems.items
     
     var container: NSPersistentContainer!
     let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -52,7 +53,7 @@ final class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController:  UITableViewDelegate{
+extension MainViewController:  UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
@@ -60,13 +61,30 @@ extension MainViewController:  UITableViewDelegate{
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        var count: Int = 0
+        switch tableView {
+        case mainView.todoTableView:
+            count = items.filter { item in
+                item.status == .todo
+            }.count
+        case mainView.doingTableView:
+            count = items.filter { item in
+                item.status == .doing
+            }.count
+        case mainView.doneTableView:
+            count = items.filter { item in
+                item.status == .done
+            }.count
+        default:
+            break
+        }
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.reuseIdentifier,
                                                        for: indexPath)
-                as? UITableViewCell else {
+                as? CustomCell else {
             return UITableViewCell()
         }
 

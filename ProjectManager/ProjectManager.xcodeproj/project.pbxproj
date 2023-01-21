@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6D1EEDF2C3DFBF602109DAD2 /* Pods_ProjectManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36B43859C5BCEAB5BAC6C56 /* Pods_ProjectManager.framework */; };
+		9002A822297B4DE700FCA5ED /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9002A821297B4DE700FCA5ED /* CustomCell.swift */; };
 		9081ACA22975B1F3005A9BF8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081ACA12975B1F3005A9BF8 /* MainView.swift */; };
 		90BBBAF72978E1300076DEEE /* DummyItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BBBAF62978E1300076DEEE /* DummyItems.swift */; };
 		90CF56242977682100B8358A /* ItemModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 90CF56222977682100B8358A /* ItemModel.xcdatamodeld */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		17CD02AAC6DF611565FDF96C /* Pods-ProjectManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectManager.release.xcconfig"; path = "Target Support Files/Pods-ProjectManager/Pods-ProjectManager.release.xcconfig"; sourceTree = "<group>"; };
+		9002A821297B4DE700FCA5ED /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		9081ACA12975B1F3005A9BF8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		90BBBAF62978E1300076DEEE /* DummyItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyItems.swift; sourceTree = "<group>"; };
 		90CF56232977682100B8358A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			children = (
 				9081ACA12975B1F3005A9BF8 /* MainView.swift */,
 				90E1AB762978819600332FB0 /* PopupView.swift */,
+				9002A821297B4DE700FCA5ED /* CustomCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 			files = (
 				90E91C302976C34900B88A26 /* CoreDataManager.swift in Sources */,
 				90E1AB772978819600332FB0 /* PopupView.swift in Sources */,
+				9002A822297B4DE700FCA5ED /* CustomCell.swift in Sources */,
 				90E91C2B2976BE8700B88A26 /* Item.swift in Sources */,
 				C7431F0A25F51E1D0094C4CF /* MainViewController.swift in Sources */,
 				90CF56242977682100B8358A /* ItemModel.xcdatamodeld in Sources */,

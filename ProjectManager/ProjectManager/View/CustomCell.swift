@@ -37,6 +37,7 @@ final class CustomCell: UITableViewCell {
     lazy var labelStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel, deadLineLabel])
         stackView.axis = .vertical
+        stackView.spacing = 2
         stackView.distribution = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -49,7 +50,7 @@ extension CustomCell {
         setupConstraints()
     }
     
-    func setupCell(_ item: Item) { //캡슐화/은닉화
+    func setupCell(_ item: Item) {
         titleLabel.text = item.title
         descriptionLabel.text = item.description
         deadLineLabel.text = "\(item.deadLine)"

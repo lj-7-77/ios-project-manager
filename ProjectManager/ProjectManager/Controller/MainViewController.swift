@@ -9,6 +9,9 @@ import CoreData
 final class MainViewController: UIViewController {
     let mainView = MainView()
     var items: [Item] = DummyItems.items
+    var todoArr: [Item] = []
+    var doingArr: [Item] = []
+    var doneArr: [Item] = []
     
     var container: NSPersistentContainer!
     let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -83,25 +86,33 @@ extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.reuseIdentifier,
-                                                       for: indexPath)
-                as? CustomCell else {
+                                                       for: indexPath) as? CustomCell else {
             return UITableViewCell()
         }
-        cell.setupCell(items[indexPath.row])
+        
+        configureCellContents()
+        
+        switch tableView {
+        case mainView.todoTableView:
+            cell.setupCell(todoArr[indexPath.row])
+        case mainView.doingTableView:
+            cell.setupCell(doingArr[indexPath.row])
+        case mainView.doneTableView:
+            cell.setupCell(doneArr[indexPath.row])
+        default:
+            break
+        }
+        
         return cell
     }
 
     private func configureCellContents() {
-        let arr: [Item] = DummyItems.items
-
-        arr.forEach{ sortItem($0) }
+        items.forEach {
+            sortItem($0)
+        }
     }
-    
+
     private func sortItem(_ item: Item) {
-        var todoArr: [Item] = []
-        var doingArr: [Item] = []
-        var doneArr: [Item] = []
-        
         switch item.status {
         case .todo:
             todoArr.append(item)

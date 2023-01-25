@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 final class CoreDataManager {
-    
+
     //MARK: - Core Data stack
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "ItemModel")
@@ -22,12 +22,24 @@ final class CoreDataManager {
         return container
     }()
     
-    func fetch() {
+    private var context: NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
+    
+    func fetchItems() -> [Item] {
+        var items: [Item] = []
+        let request = ItemEntity.fetchRequest()
         
+        do {
+            let results = try context.fetch(request)
+            return []
+        } catch {
+            print(error.localizedDescription)
+        }
+        return items
     }
     
     func createItem(_ newItem: Item) {
-        let context = persistentContainer.viewContext
         guard let itemEntity = NSEntityDescription.entity(forEntityName: "ItemEntity", in: context) else {
             return
         }
@@ -52,7 +64,6 @@ final class CoreDataManager {
     
     //MARK: - Core Data Saving support
     private func saveContext() {
-        let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
                 try context.save()

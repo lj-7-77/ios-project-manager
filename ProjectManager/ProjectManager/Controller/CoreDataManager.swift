@@ -5,31 +5,61 @@
 //  Created by 임지연 on 2023/01/17.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
-struct CoreDataManager {
+final class CoreDataManager {
     
-    //Create - 할일Item을 생성하고, state값은 TODO로 추가
-    func create(item: Item) {
+    //MARK: - Core Data stack
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "ItemModel")
+        container.loadPersistentStores { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error)")
+            }
+        }
+        
+        return container
+    }()
+    
+    func fetch() {
         
     }
     
-    //Read - 할 일 목록 반환
-    //모델에 있는 값 전체를 가져와서 state값에 따라 세가지 테이블에 나눠보여준다.
-    func fetch() -> [Item] {
+    func createItem(_ newItem: Item) {
+        let context = persistentContainer.viewContext
+        guard let itemEntity = NSEntityDescription.entity(forEntityName: "ItemEntity", in: context) else {
+            return
+        }
+        let item = NSManagedObject(entity: itemEntity, insertInto: context)
+        item.setValue(newItem.title, forKeyPath: "title")
+        item.setValue(newItem.body, forKeyPath: "body")
+        item.setValue(newItem.deadline, forKeyPath: "deadline")
+        item.setValue("\(newItem.status)", forKeyPath: "status")
         
-        return []
+        saveContext()
     }
     
-    //Update - 수정내용 반영
-    //수정항목만 다시 저장, fetchItems() 호출하여 갱신된 목록으로 업데이트한다.
-    func update(item: Item) {
+    func update() {
         
+        saveContext()
     }
     
-    //Delete - 할 일 목록 중 Item 한 개 삭제
-    func delete(item: Item) {
+    func delete() {
         
+        saveContext()
+    }
+    
+    //MARK: - Core Data Saving support
+    private func saveContext() {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror)")
+            }
+        }
     }
 }

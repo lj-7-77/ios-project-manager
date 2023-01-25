@@ -8,7 +8,8 @@
 import UIKit
 
 final class PopupViewController: UIViewController {
-    let coredataManager = CoreDataManager()
+    let coreDataManager: CoreDataManager = CoreDataManager()
+    let popupView: PopupView = PopupView()
     
     override func loadView() {
         view = createPopupView()
@@ -24,20 +25,10 @@ final class PopupViewController: UIViewController {
     private func createPopupView() -> PopupView {
         //switch문
         //+버튼 터치했을 때 -> NewItemPopupView
-        let popupView: PopupView = PopupView()
         popupView.backgroundColor = .systemBackground
         //기존항목 터치했을 때 -> PopupView
         //기존항목 터치 + Edit버튼 눌렀을 때 -> EditPopupView
         return popupView
-    }
-    
-    //NewItemPopupView에 이벤트가 발생하면, 하나의 Item타입으로 반환한다.
-    //이벤트(새로운할일 입력받고 Done버튼을 누름)
-    private func inputNewItem(item: Item) -> Item {
-        let newItem: Item = item
-        //CoreDataManager - createItem()메서드 호출,
-        //값 전달
-        return newItem
     }
     
     private func setupNavigationBar() {
@@ -52,6 +43,20 @@ final class PopupViewController: UIViewController {
                                                             action: #selector(tapDoneButton))
     }
     
-    @objc private func tapCancelButton() { }
-    @objc private func tapDoneButton() { }
+    @objc private func tapCancelButton() {
+        self.dismiss(animated: true)
+    }
+    
+    @objc private func tapDoneButton() {
+        let item: Item = Item(status: .todo,
+                              title: popupView.contentTitle.text ?? "",
+                              body: popupView.contentBody.text,
+                              deadline: popupView.contentDeadline.date)
+        saveNewItem(item)
+        self.dismiss(animated: true)
+    }
+    
+    private func saveNewItem(_ item: Item) {
+        coreDataManager.createItem(item)
+    }
 }

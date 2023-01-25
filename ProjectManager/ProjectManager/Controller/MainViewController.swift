@@ -8,22 +8,23 @@ import CoreData
 
 final class MainViewController: UIViewController {
     let mainView = MainView()
+    
     var items: [Item] = DummyItems.items
     var todoArr: [Item] = []
     var doingArr: [Item] = []
     var doneArr: [Item] = []
     
-    var container: NSPersistentContainer!
-    let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-
     override func loadView() {
         view = mainView
         setupNavigationBar()
+        setupTableView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+
+    private func setupTableView() {
         mainView.todoTableView.delegate = self
         mainView.todoTableView.dataSource = self
         mainView.todoTableView.register(CustomCell.self, forCellReuseIdentifier: "cell")

@@ -24,18 +24,18 @@ final class CustomCell: UITableViewCell {
         return label
     }()
     
-    private let descriptionLabel: UILabel = {
+    private let bodyLabel: UILabel = {
         let label = UILabel()
         return label
     }()
     
-    private let deadLineLabel: UILabel = {
+    private let deadlineLabel: UILabel = {
         let label = UILabel()
         return label
     }()
     
     lazy var labelStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel, deadLineLabel])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, bodyLabel, deadlineLabel])
         stackView.axis = .vertical
         stackView.spacing = 2
         stackView.distribution = .fill
@@ -52,8 +52,8 @@ extension CustomCell {
     
     func setupCell(_ item: Item) {
         titleLabel.text = item.title
-        descriptionLabel.text = item.description
-        deadLineLabel.text = "\(item.deadLine)"
+        bodyLabel.text = item.body
+        deadlineLabel.text = "\(item.deadline)"
     }
     
     private func setupConstraints() {

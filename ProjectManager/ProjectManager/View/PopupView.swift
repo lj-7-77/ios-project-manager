@@ -17,12 +17,11 @@ class PopupView: UIView {
     
     let contentBody: UITextView = {
        let textView = UITextView()
-        textView.text = "할 일 내용"
         textView.font = UIFont.preferredFont(forTextStyle: .body)
         return textView
     }()
     
-    let contentDeadLine: UIDatePicker = {
+    let contentDeadline: UIDatePicker = {
         let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 30, width: 300, height: 300))
         datePicker.timeZone = NSTimeZone.local
         datePicker.backgroundColor = UIColor.white
@@ -31,7 +30,7 @@ class PopupView: UIView {
     }()
     
     lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [contentTitle, contentDeadLine, contentBody])
+        let stackView = UIStackView(arrangedSubviews: [contentTitle, contentDeadline, contentBody])
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fill

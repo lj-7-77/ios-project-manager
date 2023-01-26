@@ -9,7 +9,7 @@ import CoreData
 final class MainViewController: UIViewController {
     let mainView = MainView()
     
-    var items: [Item] = DummyItems.items
+    var items: [Item] = CoreDataManager.shared.readItems()
     var todoArr: [Item] = []
     var doingArr: [Item] = []
     var doneArr: [Item] = []

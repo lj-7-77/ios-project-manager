@@ -84,7 +84,6 @@
 				907EDDB72981981B008A6B11 /* ItemEntity+CoreDataProperties.swift */,
 				90E91C2A2976BE8700B88A26 /* Item.swift */,
 				90BBBAF62978E1300076DEEE /* DummyItems.swift */,
-				90E91C2F2976C34900B88A26 /* CoreDataManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -92,6 +91,7 @@
 		90E91C2D2976C00400B88A26 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				90E91C2F2976C34900B88A26 /* CoreDataManager.swift */,
 				C7431F0925F51E1D0094C4CF /* MainViewController.swift */,
 				90E1AB782978823E00332FB0 /* PopupViewController.swift */,
 			);

@@ -14,8 +14,8 @@ struct Item {
     let deadline: Date
 }
 
-enum Status {
-    case todo
-    case doing
-    case done
+enum Status: String {
+    case todo = "todo"
+    case doing = "doing"
+    case done = "done"
 }

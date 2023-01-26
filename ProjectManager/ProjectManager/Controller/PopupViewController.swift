@@ -8,7 +8,6 @@
 import UIKit
 
 final class PopupViewController: UIViewController {
-    let coreDataManager: CoreDataManager = CoreDataManager()
     let popupView: PopupView = PopupView()
     
     override func loadView() {
@@ -57,6 +56,6 @@ final class PopupViewController: UIViewController {
     }
     
     private func saveNewItem(_ item: Item) {
-        coreDataManager.createItem(item)
+        CoreDataManager.shared.createItem(item)
     }
 }

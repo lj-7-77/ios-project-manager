@@ -9,8 +9,8 @@ import UIKit
 import CoreData
 
 final class CoreDataManager {
-
-    //MARK: - Core Data stack
+    static let shared = CoreDataManager()
+    
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "ItemModel")
         container.loadPersistentStores { (storeDescription, error) in
@@ -26,21 +26,35 @@ final class CoreDataManager {
         return persistentContainer.viewContext
     }
     
-    func fetchItems() -> [Item] {
+    func readItems() -> [Item] {
         var items: [Item] = []
-        let request = ItemEntity.fetchRequest()
-        
-        do {
-            let results = try context.fetch(request)
-            return []
-        } catch {
-            print(error.localizedDescription)
+        let fetchResults: [ItemEntity] = fetchData()
+        fetchResults.forEach { result in
+            let item = Item(status: Status(rawValue: "\(result.status ?? "")") ?? Status.todo,
+                            title: result.title ?? "",
+                            body: result.body ?? "",
+                            deadline: result.deadline ?? Date())
+            items.append(item)
         }
         return items
     }
     
+    func fetchData() -> [ItemEntity] {
+        var itemEntities: [ItemEntity] = []
+        
+        do {
+            let requestEntity = ItemEntity.fetchRequest()
+            itemEntities = try context.fetch(requestEntity)
+            return itemEntities
+        } catch {
+            print(error.localizedDescription)
+        }
+        return []
+    }
+    
     func createItem(_ newItem: Item) {
-        guard let itemEntity = NSEntityDescription.entity(forEntityName: "ItemEntity", in: context) else {
+        guard let itemEntity =
+                NSEntityDescription.entity(forEntityName: "ItemEntity", in: context) else {
             return
         }
         let item = NSManagedObject(entity: itemEntity, insertInto: context)
@@ -62,7 +76,6 @@ final class CoreDataManager {
         saveContext()
     }
     
-    //MARK: - Core Data Saving support
     private func saveContext() {
         if context.hasChanges {
             do {
